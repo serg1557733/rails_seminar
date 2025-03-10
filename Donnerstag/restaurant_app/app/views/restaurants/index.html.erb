@@ -1,0 +1,15 @@
+<div data-controller="restaurant">
+
+  <%= simple_form_for Restaurant.new, data: {action: "submit->restaurant#createRestaurant"} do |f |%>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :rating %>
+    <%= f.submit %>
+  <% end %>
+
+  <% @restaurants.each do |restaurant|  %>
+    <li>
+    <%= link_to restaurant.name, restaurant_path(restaurant), data: { restaurant_target: "link"} %>
+    </li>
+  <% end %>
+</div>

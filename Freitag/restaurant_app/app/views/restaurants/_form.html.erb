@@ -1,0 +1,9 @@
+<%=form_with model:@restaurant do |form|%>
+  <%=form.label :name  %>
+  <%=form.text_field :name, placeholder: "Restaurant Name" %>
+  <%=form.label :address %>
+  <%=form.text_field :address, placeholder: "Restaurant Address" %>
+
+
+  <%=form.submit "Create Restaurant" %>
+<% end %>

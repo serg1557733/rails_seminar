@@ -1,0 +1,30 @@
+<h1><%= @restaurant.name %></h1>
+<h3>Address: <%= @restaurant.address %></h3>
+<h3>Rating: <%= @restaurant.rating %></h3>
+<h3>Chef: <%= @restaurant.chef.name %></h3>
+<%= link_to "🛠️", edit_restaurant_path(@restaurant) %>
+<%= link_to "☠️", restaurant_path(@restaurant), data: {turbo_method: :delete} %>
+
+<%= link_to "More info about Chef", chef_info_restaurant_path(@restaurant.chef) %>
+
+<h2>Review</h2>
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.content %></p>
+<%  end %>
+
+<div data-controller="formhandler"  data-formhandler-chef-value="<%= @restaurant.chef.name %>">
+  <button class="btn btn-primary" data-action="click->formhandler#toggler">Write Review</button>
+  <div class="d-none" data-formhandler-target="formwrap">
+    <%= form_with model: @restaurant do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div id="ra">
+  <p>This is a test paragraph for Rails.</p>
+  <%= render @restaurant %>
+</div>

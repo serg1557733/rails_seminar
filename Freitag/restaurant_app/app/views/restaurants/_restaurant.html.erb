@@ -1,0 +1,10 @@
+
+  <li id=restaurant.id >
+    <%= link_to restaurant.name, restaurant_path(restaurant) %>
+    <p>
+    <%= turbo_frame_tag id="<%=restaurant_#{@restaurant.id}_item"  do %>
+        <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+      <% end %>
+
+    </p>
+  </li>
